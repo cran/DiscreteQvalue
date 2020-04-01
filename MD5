@@ -1,7 +1,7 @@
-970ce37301636fdf018ca7dc7720feef *DESCRIPTION
+67c6b1ac01047b99329b62ef1eaa09a9 *DESCRIPTION
 7bfde1202d230b6a402ee8ebce063bf7 *NAMESPACE
-99d11c9365bd702b3c6745653d2a4f54 *R/DQ.R
-f21f951c37b09f5992a30f3162fa1be0 *R/DiscreteQvalue-package.R
+bb0600fe49b8c2afcdffd2ace7c8a65d *R/DQ.R
+61e7f0ea026295ced643197c220cb1e3 *R/DiscreteQvalue-package.R
 e68c9ac0031f740090ae4021fa05e70e *R/Rp.R
 2870a617b29b5aa1007e0ca873f4f72f *R/est.pi0.disc.R
 2150e473f533b75e5b36e7aa197d9873 *R/get.tbl.full.R
@@ -9,5 +9,5 @@ e68c9ac0031f740090ae4021fa05e70e *R/Rp.R
 488461989d439b1b767dff05cdf1c754 *R/q.value_pi0.R
 6872e15a0f5749b95ab2c58f3a3489b3 *R/which.min.left.R
 b4023ca91a7eb70ccf323577144a0c4e *R/zzz.R
-da67ea25e1e1ab57440b1d0618c1791e *man/DQ.Rd
-18de3241147263624d248c3a2a0949dd *man/DiscreteQvalue-package.Rd
+716395cf277d4bcb62d4229565d09ca7 *man/DQ.Rd
+bc3f5c41492fc831c516b055821621f6 *man/DiscreteQvalue-package.Rd

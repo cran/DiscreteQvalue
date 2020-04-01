@@ -1,23 +1,23 @@
-#' @title Improved q-Values for Discrete Uniform and Homogeneous Tests
+#' @title Improved q-values for discrete uniform and homogeneous tests
 #' @aliases DQ
-#' @description Performs the five versions of the q-value method considered in Cousido-Rocha et al. (2019). The q-value method is based on the false discovery rate (FDR), and the  versions differ in the  estimator of the proportion of true null hypotheses, \eqn{\pi_0}{\pi_0}, which is plugged in the FDR estimator. Specifically, we consider as possible estimators for \eqn{\pi_0}{\pi_0}: two usual estimators for continuous and possibly heterogeneous P-values; an estimator for discrete P-values defined in two steps: firstly the P-values are randomized, and then the usual \eqn{\pi_0}{\pi_0} estimator for continuous P-values is applied; and the estimators recently proposed for discrete P-values by Liang (2016) and Chen et al. (2014).
+#' @description Performs the five versions of the q-value method considered in Cousido-Rocha et al. (2019). The q-value method is based on the false discovery rate (FDR), and the  versions differ in the  estimator of the proportion of true null hypotheses, \eqn{\pi_0}{π_0}, which is plugged in the FDR estimator. Specifically, we consider as possible estimators for \eqn{\pi_0}{π_0}: two usual estimators for continuous and possibly heterogeneous P-values; an estimator for discrete P-values defined in two steps: firstly the P-values are randomized, and then the usual \eqn{\pi_0}{π_0} estimator for continuous P-values is applied; and the estimators recently proposed for discrete P-values by Liang (2016) and Chen et al. (2014).
 #'
 #'
 #' @param pv A vector of P-values.
 #' @param ss Support of the discrete distribution of the P-values. Only required for “Liang”, “Chen” and “Rand” methods which are specifically proposed for discrete P-values. If the P-values are continuous the methods “ST” and “SS” do not need this argument, hence “ss=NULL” by default.
 #' @param ss_inf Logical. Default is FALSE. A variable indicating whether the support of the discrete distribution of the P-values is finite or infinite. See details.
 #' @param method The q-value method. By default the “Chen” method is computed.
-#' @param lambda The value of the tuning parameter to estimate \eqn{\pi_0}{\pi_0} when the method is “ST”. See details.
+#' @param lambda The value of the tuning parameter to estimate \eqn{\pi_0}{π_0} when the method is “ST”. See details.
 #'
 #' @details The function implements the five different versions of the q-value method in Cousido-Rocha et al. (2019).
 #' Three versions are novel adaptions for the case of homogeneous discrete uniform P-values, whereas the other two
 #' are classical versions of the q-value method for P-values which follow a continuous uniform distribution under the global null hypothesis.
-#' The classical versions are the q-value method based on the \eqn{\pi_0}{\pi_0} estimator proposed in Storey (2002) with tunning parameter \eqn{\lambda}{lambda} = 0.5,
-#' and the q-value procedure which uses the \eqn{\pi_0}{\pi_0} estimator in Storey and Tibshirani (2003) who proposed an automatic method to estimate \eqn{\pi_0}{\pi_0}.
+#' The classical versions are the q-value method based on the \eqn{\pi_0}{π_0} estimator proposed in Storey (2002) with tunning parameter \eqn{\lambda}{lambda} = 0.5,
+#' and the q-value procedure which uses the  \eqn{\pi_0}{π_0} estimator in Storey and Tibshirani (2003) who proposed an automatic method to estimate \eqn{\pi_0}{π_0}.
 #' We refer to these methods as “SS” and “ST”, respectively. On the other hand the three adaptations of the q-value method
-#' for homogeneous discrete uniform P-values are: “Liang” which considers the \eqn{\pi_0}{\pi_0} estimator proposed in
+#' for homogeneous discrete uniform P-values are: “Liang” which considers the  \eqn{\pi_0}{π_0} estimator proposed in
 #' Liang (2016); “Chen” which uses a simplification for homogeneous discrete P-values of the algorithm for
-#' the estimation of \eqn{\pi_0}{\pi_0} proposed in Chen et al. (2014); and “Rand” which employs the standard q-value procedure but applied to
+#' the estimation of \eqn{\pi_0}{π_0} proposed in Chen et al. (2014); and “Rand” which employs the standard q-value procedure but applied to
 #' randomized P-values. For details of the different q-value versions, in
 #' particular for the novel adaptations for homogeneous discrete uniform P-values, see Cousido-Rocha et al. (2019).
 #'
@@ -70,20 +70,6 @@
 #'
 #'
 #' @examples
-#' \dontshow{
-#' set.seed(123)
-#' p <- 100
-#' n = m = 5
-#' X <- matrix(rnorm(n * p), ncol = n)
-#' Y <- matrix(rnorm(m * p), ncol = m)
-#' p <- nrow(X)
-#' pv <- 1:p
-#' for (i in 1:p){
-#'   pv[i] <- t.test(X[i, ], Y[i, ])$p.value
-#' }
-#'
-#' R <- DQ(pv, method = "ST")
-#' }
 #'
 #' # We consider a simple simulated data set to illustrate the use of the DQ function.
 #' # We have simulated the following situation.
@@ -176,7 +162,7 @@
 #' p <- nrow(X)
 #' pv <- 1:p
 #' for (i in 1:p){
-#'   pv[i] <-wilcox.exact(X[i, ], Y[i, ])$p.value
+#'   pv[i] <- wilcox.exact(X[i, ], Y[i, ])$p.value
 #' }
 #'
 #' # When the sample size is small, in this case n=m=5, the distribution of
@@ -262,11 +248,11 @@
 #' # course s_inf = TRUE.
 #'
 #' indicator <- which(ss <= 0.5)
-#' ss <- ss[indicator]
-#' R <- DQ(pv, ss = ss, s_inf = "TRUE", method = "Chen")
+#' ssi <- ss[indicator]
+#' R <- DQ(pv, ss = ssi, ss_inf = "TRUE", method = "Chen")
 #' # For Liang method the relevant support values are also the values below 0.5, hence
 #' # ss defined above is suitable.
-#' R <- DQ(pv, ss = ss, s_inf = "TRUE", method = "Liang")
+#' R <- DQ(pv, ss = ssi, ss_inf = "TRUE", method = "Liang")
 #'
 #' # For Rand method the relevant support values are those ones with match with
 #' # the P-values, and also the largest support points smaller than each one of such P-values.
@@ -282,7 +268,7 @@
 #' ind_final <- unique(sort(c(ind, ind_minus)))
 #' ss <- ss[ind_final]
 #' # Now, we can apply Rand method.
-#' R <- DQ(pv, ss = ss, s_inf = "TRUE", method = "Rand")
+#' R <- DQ(pv, ss = ss, ss_inf = "TRUE", method = "Rand")
 #'
 #'}
 #'
@@ -291,14 +277,14 @@
 #' @export
 DQ <- function(pv, ss = NULL, ss_inf = FALSE, method = c("ST", "SS", "Liang", "Chen", "Rand"), lambda = seq(0.05, 0.95, 0.05)){
 
-  # message("Call:", "\n")
+  # cat("Call:", "\n")
   # print(match.call())
 
   match.arg(method)
 
   if (missing(method)) {
     method <- "ST"
-    message("'ST' method used by default\n")
+    cat("'ST' method used by default\n")
   }
 
   if(method == "ST" || method == "SS"){
@@ -380,7 +366,7 @@ DQ <- function(pv, ss = NULL, ss_inf = FALSE, method = c("ST", "SS", "Liang", "C
 
    ##### Liang method
    if(method == "Liang"){
-
+    p.grid<-ss
     NN <- length(ss)
     p.count.mat <- get.tbl.full(pv, NN, ss)
     pi0_Liang <- est.pi0.disc(p.count.mat, p.grid)$pi0 # DEVOLVE A FUNCIÓN pi0 método Liang

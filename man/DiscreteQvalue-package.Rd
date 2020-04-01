@@ -4,7 +4,7 @@
 \name{DiscreteQvalue-package}
 \alias{DiscreteQvalue}
 \alias{DiscreteQvalue-package}
-\title{Improved q-Values for Discrete Uniform and Homogeneous Tests}
+\title{Improved q-values for discrete uniform and homogeneous tests}
 \value{
 \itemize{
 \item{‘\link{DQ}’}
@@ -14,16 +14,16 @@
 This package implements five different versions of the q-value multiple testing procedure
 proposed by Storey and Tibshirani (2003). The q-value method
 is based on the false discovery rate (FDR); different versions of the q-value method can be defined depending
-on the particular estimator used for the proportion of true null hypotheses, \eqn{\pi_0}{\pi_0}, which is plugged in the FDR formula. The
-first version of the q-value uses the \eqn{\pi_0}{\pi_0} estimator in Storey (2002), with tunning parameter \eqn{\lambda}{lambda} = 0.5; whereas
-the second version uses the \eqn{\pi_0}{\pi_0} estimator in Storey and Tibshirani (2003), which is based on an automatic method to
+on the particular estimator used for the proportion of true null hypotheses, \eqn{\pi_0}{π_0}, which is plugged in the FDR formula. The
+first version of the q-value uses the \eqn{\pi_0}{π_0} estimator in Storey (2002), with tunning parameter \eqn{\lambda}{lambda} = 0.5; whereas
+the second version uses the \eqn{\pi_0}{π_0} estimator in Storey and Tibshirani (2003), which is based on an automatic method to
 select the tunning parameter
 \eqn{\lambda}{lambda}. These two methods are only appropriate when the P-values follow a continuous uniform distribution
 under the global null hypothesis. This package also provides three other versions of the q-value for
 homogeneous discrete uniform P-values, which often appear in practice.
-The first discrete version of the q-value uses the \eqn{\pi_0}{\pi_0} estimator
+The first discrete version of the q-value uses the \eqn{\pi_0}{π_0} estimator
 proposed in Liang (2016).
-The second discrete q-value method uses the estimator of \eqn{\pi_0}{\pi_0} proposed in Chen et al. (2014),
+The second discrete q-value method uses the estimator of \eqn{\pi_0}{π_0} proposed in Chen et al. (2014),
 when simplified for the special case of homogeneous discrete P-values.
 The third discrete version of the q-value employs a standard procedure but applied on randomized P-values.
 Once the estimated q-values are computed, the q-value method
